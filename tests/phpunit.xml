@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<phpunit
+  bootstrap="Bootstrap.php"
+  backupGlobals="false"
+  backupStaticAttributes="false"
+  syntaxCheck="false"
+  convertErrorsToExceptions="true"
+  convertNoticesToExceptions="true"
+  convertWarningsToExceptions="true"
+>
+    <testsuites>
+        <testsuite name="leaseapp">
+            <directory>./GeolocationTest</directory>
+        </testsuite>
+    </testsuites>
+
+    <filter>
+        <whitelist>
+            <directory suffix=".php">../src</directory>
+            <exclude>
+                <directory suffix=".phtml">../view</directory>
+                <directory suffix=".php">../test/</directory>
+            </exclude>
+        </whitelist>
+    </filter>
+
+    <!--logging>
+        <log type="coverage-html" target="../../data/log/codeCoverage" charset="UTF-8"
+            yui="true" highlight="true"
+            lowUpperBound="50" highLowerBound="80"/>
+        <log type="testdox-html" target="../../data/log/testdox.html" />
+    </logging-->
+</phpunit>

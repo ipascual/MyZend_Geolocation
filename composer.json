@@ -1,0 +1,13 @@
+{
+    "name": "myzend/geolocation",
+    "description": "MyZend Geolocation handles Google Maps API to resolve addresses.",
+    "authors": [
+        {
+            "name": "Ignacio Pascual",
+            "email": "ipascual@unexpectedit.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+    }
+ }

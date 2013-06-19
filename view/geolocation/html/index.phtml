@@ -1,0 +1,6 @@
+<?php $geo = $this->geolocation; ?>
+<?php if($geo->getCity()): ?>
+    <?php echo $geo->getCity()." "."<font size ='3'>(".$geo->getCountry()->getName().")</font>"; ?>
+<?php else: ?>
+    <?php echo $geo->getAddress(); ?>
+<?php endif; ?>
