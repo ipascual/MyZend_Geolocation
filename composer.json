@@ -1,14 +1,24 @@
 {
     "name": "myzend/geolocation",
     "description": "MyZend Geolocation handles Google Maps API to resolve addresses.",
+    "type" : "zf2-module",
     "authors": [
         {
             "name": "Ignacio Pascual",
             "email": "ipascual@unexpectedit.com"
         }
     ],
+    "autoload": {
+        "psr-0": {
+            "Geolocation": "src/"
+        },
+        "classmap": [
+            "./Module.php"
+        ]
+    },
     "minimum-stability": "dev",
     "require": {
-	"myzend/core": "dev-master"
-    }
+        "php":                               ">=5.3.3",
+        "zendframework/zendframework":       "2.*"
+    },
  }
