@@ -231,7 +231,7 @@ class GeolocationTest extends AbstractTestCase {
 
 		$geoDataSample = array(
 			"country_name" => "Test Country",
-			"country_code2" => "TS"
+			"country_code2" => "TS",
 		);
 
 		$newCountry = $this->geolocationService->createCountry($geoDataSample);
