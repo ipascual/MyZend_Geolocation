@@ -1,0 +1,14 @@
+<?php 
+	// Google Geolocation		
+	$this->headScript()->appendFile('//maps.googleapis.com/maps/api/js?key=AIzaSyA9yugajKSvlaXMgXYSM29uiBkOx0R2NKo&libraries=places&sensor=false&language=en');
+	
+	//Bootstrap
+	$this->headScript()->appendFile($this->basePath() . '/js/login/jquery.min.js');
+	$this->headScript()->appendFile($this->basePath() . '/js/login/jquery-ui-1.10.2.custom.min.js');
+	$this->headScript()->appendFile($this->basePath() . '/js/login/bootstrap.min.js');
+	$this->headScript()->appendFile($this->basePath() . '/js/login/jquery.validate.js');
+	$this->headScript()->appendFile($this->basePath() . '/js/login/jquery.wizard.js');
+	$this->headScript()->appendFile($this->basePath() . '/js/login/account.js');
+	
+	echo $this->headScript();
+?>

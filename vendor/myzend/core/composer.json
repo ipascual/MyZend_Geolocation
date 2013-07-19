@@ -1,0 +1,24 @@
+{
+    "name": "myzend/core",
+    "description": "MyZend Core is a group of required classes for MyZend pacakges.",
+    "type" : "zf2-module",
+    "authors": [
+        {
+            "name": "Ignacio Pascual",
+            "email": "ipascual@unexpectedit.com"
+        }
+    ],
+    "autoload": {
+        "psr-0": {
+            "MyZend": "src/"
+        },
+        "classmap": [
+            "./Module.php"
+        ]
+    },
+    "require": {
+        "php":                               ">=5.3.3",
+        "zendframework/zendframework":       "2.*"
+    },
+    "minimum-stability": "dev"
+ }

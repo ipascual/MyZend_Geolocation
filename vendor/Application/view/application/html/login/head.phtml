@@ -1,0 +1,21 @@
+<head>
+	<meta charset="utf-8">
+	<?php echo $this->headTitle('') ?>
+	<?php echo $this->headMeta()->appendName('viewport', 'width=device-width, initial-scale=1.0') ?>
+
+	<?php 
+		//Included CSS Files (Compressed)
+		$this->headLink()->appendStylesheet($this->basePath() . '/css/login/bootstrap/bootstrap.min.css');
+		$this->headLink()->appendStylesheet($this->basePath() . '/css/login/bootstrap/bootstrap-responsive.css');
+		$this->headLink()->appendStylesheet($this->basePath() . '/css/login/bootstrap/bootstrap-overrides.css');
+		$this->headLink()->appendStylesheet($this->basePath() . '/css/login/account.css');
+	?>
+	
+	<?php echo $this->headLink(); ?>
+	<?php echo $this->headScript(); ?>
+
+	<!--[if lt IE 9]>
+	      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+
+</head>

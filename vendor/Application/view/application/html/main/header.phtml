@@ -1,0 +1,97 @@
+    <!-- navbar -->
+    <div class="navbar navbar-inverse">
+        <div class="navbar-inner">
+            <a class="brand" href="/"><img src="/img/logo-hiperlytics.png" alt="logo" /></a>
+            <ul id="top_menu" class="nav pull-right">
+       			<?php if($this->zfcUserIdentity()): ?>
+	                <li><a href="/user/profile/myaccount"><i class="lease-icon-user"></i><span>Profile</span></a></li>
+    	            <li><a href="/user/profile/settings"><i class="lease-icon-cog"></i><span>Settings</span></a></li>
+	                <li><a href="/support"><i class="lease-icon-support"></i><span>Support</span></a></li>
+	                <li><a href="/auth/logout"><i class="lease-icon-signout"></i><span>Sign Out</span></a></li>
+	            <?php else: ?>
+					<li><a href="/support"><i class="lease-icon-support"></i><span>Support</span></a></li>
+					<li><a href="/auth/login"><i class="lease-icon-signout"></i><span>Sign In</span></a></li>
+	            <?php endif; ?>
+            </ul>         
+        </div>
+		<?php if ($this->zfcUserIdentity()): ?>
+         <!-- shows same menu as sidebar but for mobile devices -->
+         <div class="row-fluid visible-phone phone-header-parent">
+         	<div class="span12">
+            <div class="row-fluid phone-header">
+                <div class="span12"> <span class="phone-header-text pull-left"></span>
+                <button id="nav_btn_collapse" type="button" class="btn btn-navbar">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				  </button>
+                </div>
+            </div>
+                <div class="nav-collapse-div mobile-menu">
+                    <ul id="dashboard-menu-phone" class="nav">
+                        <!--li class="side-bar-item"><a href="/user/profile/">Dashboard</a></li-->
+                        <li class="side-bar-item"><a href="/report/plrmanage/index">My List Reports</a></li>
+                        <li class="side-bar-item"><a href="/report/plrwizard/index">Create Lease Report</a></li>
+                        <li class="side-bar-item"><a href="/report/crmanage/index">My Comparison Reports</a></li>
+                        <li class="side-bar-item"><a href="/report/crmanage/edit">Compare Reports</a></li>
+                    </ul>
+                </div>
+                <!-- end navbar for mobile devices -->
+            </div>
+        </div>
+        <?php endif; ?>
+    </div>
+    <!-- end navbar -->
+
+    <!-- sidebar -->
+    <?php if ($this->zfcUserIdentity()): ?>
+	    <?php if(!isset($light)): ?>
+	    <div id="sidebar-nav" class="hidden-phone">
+	        <ul id="dashboard-menu">
+	            <!--li class="side-bar-item">
+	                <a href="/user/profile/">
+	                    <i class="icon-dashboard"></i>
+	                    <span>Dashboard</span>
+	                </a>
+	            </li-->
+	            <li class="sidebar-header">
+	               <span class="large-header">PROPERTY LEASE REPORTS</span><span class="short-header">PLR</span>
+	            </li>     
+	            <li class="side-bar-item">
+	                <a href="/report/plrmanage/index">
+	                    <i class="lease-icon-plrarchive"></i>
+	                    <span>My Lease Reports</span>
+	                </a>
+	            </li>
+	            <li class="side-bar-item">
+	                <a href="/report/plrwizard/index">
+	                    <i class="lease-icon-plrcreate"></i>
+	                    <span>Create Lease Report</span>
+	                </a>
+	            </li>
+	            <li class="sidebar-header">
+	               <span class="large-header">COMPARISON REPORTS</span><span class="short-header">CR</span>
+	            </li>
+	            <li class="side-bar-item">
+	                <a href="/report/crmanage/index">
+	                    <i class="lease-icon-crarchive"></i>
+	                    <span>My Comparison Reports</span>
+	                </a>
+	            </li>
+	            <li class="side-bar-item">
+	                <a href="/report/crmanage/edit">
+	                    <i class="lease-icon-crcreate"></i>
+	                    <span>Compare Reports</span>
+	                </a>
+	            </li>
+	        </ul>
+	    </div>
+	    <?php endif; ?>
+   <?php endif; ?>
+    <!-- end sidebar -->
+
+<?php if(! $this->zfcUserIdentity()): ?>
+	<style>
+		.content{margin-left:0px;}
+	</style>
+<?php endif; ?>
