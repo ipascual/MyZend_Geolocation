@@ -243,6 +243,10 @@ class GeolocationTest extends AbstractTestCase {
 
 	}
 
+	/**
+	 * lookupGeolocation test
+	 *
+	 */
 	public function testlookupGeolocation() {
 
 		$existingLocation = "Moscow";
@@ -252,12 +256,47 @@ class GeolocationTest extends AbstractTestCase {
 		$notExistingLocation = "dkljfslkdfjdslkjf";
 		$resultFalse = $this->geolocationHelper->lookupGeolocation($notExistingLocation);
 		$this->assertSame(null, $resultFalse);
+	}
+
+	/**
+	 * forwardSearch test
+	 *
+	 */
+	public function testForwardSearch(){
+
+		$location = "Stavropol";
+
+		$result = $this->googleMapsHelper->forwardSearch($location);
+
+		$this->assertNotNull($result);
+	}
+	/**
+	 * reverseSearch test
+	 *
+	 */
+	public  function testReverseSearch(){
+
+		$latitude = 40.7846292;
+		$longitude = -73.8285851;
+
+		$result = $this->googleMapsHelper->reverseSearch($latitude, $longitude);
+
+		$this->assertNotNull($result);
 
 	}
 
+	/**
+	 * setStatus test
+	 *
+	 */
+	public function testSetStatus() {
 
+	$this->googleMapsHelper->forwardSearch("Barcelona, Spain");
+	$this->googleMapsHelper->setStatus(GoogleMapsHelper::REQUEST_DENIED);
 
+	$this->assertEquals('REQUEST_DENIED', $this->googleMapsHelper->getStatus());
 
+	}
 
 
 
