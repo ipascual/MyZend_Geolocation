@@ -25,10 +25,10 @@
         </whitelist>
     </filter>
 
-    <!--logging>
-        <log type="coverage-html" target="../../data/log/codeCoverage" charset="UTF-8"
+    <!-- <logging>
+        <log type="coverage-html" target="codeCoverage" charset="UTF-8"
             yui="true" highlight="true"
             lowUpperBound="50" highLowerBound="80"/>
-        <log type="testdox-html" target="../../data/log/testdox.html" />
-    </logging-->
+        <log type="testdox-html" target="testdox.html" />
+    </logging> -->
 </phpunit>
