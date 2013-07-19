@@ -16,10 +16,5 @@ class CityService extends Service {
 		$this->dm = $sm->get('doctrine.documentmanager.odm_default');
 	}
 
-	public function findCities(array $data) {
-		return $this->dm->getRepository("Geolocation\Document\City")->findBy($data);
-
-	}
-
 
 }

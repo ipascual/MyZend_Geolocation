@@ -221,10 +221,26 @@ class GeolocationTest extends AbstractTestCase {
 		$cities = $this->cityService->findBy(array("country.id" => $country->getId()))->toArray();
 		$this->assertContains($newCity, $cities);
 
-
-
 	}
 
+	/**
+	 * Create a new country
+	 *
+	 */
+	public function testCreateCountry() {
+
+		$geoDataSample = array(
+			"country_name" => "Test Country",
+			"country_code2" => "TS"
+		);
+
+		$newCountry = $this->geolocationService->createCountry($geoDataSample);
+		$this->assertInstanceOf("Geolocation\Document\Country", $newCountry);
+
+		$getCountryFromDb = $this->geolocationService->findCountry(array("name"=>"Test Country"));
+		$this->assertEquals($newCountry, $getCountryFromDb);
+
+	}
 
 
 
