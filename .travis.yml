@@ -1,0 +1,17 @@
+language: php
+php:
+  - "5.4"
+
+before_script:
+  - curl -s https://getcomposer.org/installer | php
+  - php composer.phar update
+
+services:
+  - mongodb
+
+script:
+  - cd /tests
+  - phpunit
+
+notifications:
+  email: false

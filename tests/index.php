@@ -1,5 +1,5 @@
 <?php
-$command = "phpunit --debug";
+$command = "phpunit";
 //$command = "phpunit --filter UserServiceTest";
 //$command = "phpunit --filter UserTest::testUserChangeAddress";
 //$command = "phpunit --filter UserTest::testUserChangeAddress --debug";

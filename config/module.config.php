@@ -45,7 +45,7 @@ return array(
                 'class' => 'Doctrine\ODM\MongoDB\Mapping\Driver\AnnotationDriver',
                 'cache' => 'array',
                 'paths' => array(__DIR__ . '/../src/' . __NAMESPACE__ . '/Document')
-				
+
             ),
             'odm_default' => array(
                 'drivers' => array(
@@ -61,13 +61,13 @@ return array(
 		'strategies' => array(
             'ViewJsonStrategy',
         ),
-	),	
-	'bjyauthorize' => array(
+	),
+	/* 'bjyauthorize' => array(
 	    'guards' => array(
 	        'BjyAuthorize\Guard\Controller' => array(
 	        	array('controller' => 'Geolocation\Controller\Index', 'roles' => array('guest', 'user')),
 	        ),
 	    ),
-	),
+	), */
 
 );
