@@ -119,6 +119,7 @@ class Bootstrap
 	 */
 	public static function setUp() {
 		self::createDatabase();
+
 	}
 
 	public static function tearDown() {

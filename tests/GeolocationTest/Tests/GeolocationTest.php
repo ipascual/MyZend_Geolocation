@@ -6,6 +6,7 @@ use GeolocationTest\AbstractTestCase;
 use Geolocation\Service\GeolocationService;
 use Geolocation\Service\CityService;
 use Geolocation\Helper\GoogleMapsHelper;
+use Geolocation\Helper\GeolocationHelper;
 
 
 
@@ -20,8 +21,8 @@ class GeolocationTest extends AbstractTestCase {
 
 		$this->geolocationService = new GeolocationService($this->getServiceManager());
 		$this->cityService = new CityService($this->getServiceManager());
-		//$this->countryService = new CountryService($this->getServiceManager());
 		$this->googleMapsHelper = new GoogleMapsHelper($this->getServiceManager());
+		$this->geolocationHelper = new GeolocationHelper($this->getServiceManager());
 	}
 
 
@@ -242,6 +243,17 @@ class GeolocationTest extends AbstractTestCase {
 
 	}
 
+	public function testlookupGeolocation() {
+
+		$existingLocation = "Moscow";
+		$resultTrue = $this->geolocationHelper->lookupGeolocation($existingLocation);
+		$this->assertInstanceOf("Geolocation\Document\Geolocation", $resultTrue);
+
+		$notExistingLocation = "dkljfslkdfjdslkjf";
+		$resultFalse = $this->geolocationHelper->lookupGeolocation($notExistingLocation);
+		$this->assertSame(null, $resultFalse);
+
+	}
 
 
 
