@@ -62,12 +62,5 @@ return array(
             'ViewJsonStrategy',
         ),
 	),
-	/* 'bjyauthorize' => array(
-	    'guards' => array(
-	        'BjyAuthorize\Guard\Controller' => array(
-	        	array('controller' => 'Geolocation\Controller\Index', 'roles' => array('guest', 'user')),
-	        ),
-	    ),
-	), */
 
 );

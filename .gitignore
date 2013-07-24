@@ -1,11 +1,4 @@
 composer.lock
-tests/codeCoverage/
-tests/testdox.html
-vendor/autoload.php
-vendor/bin/
-vendor/composer/
-vendor/doctrine/
-vendor/myzend/
-vendor/symfony/
-vendor/zendframework/
-composer.phar
+tests/CodeCoverage/*
+tests/data/*
+vendor/*

@@ -8,8 +8,6 @@ use Geolocation\Service\CityService;
 use Geolocation\Helper\GoogleMapsHelper;
 use Geolocation\Helper\GeolocationHelper;
 
-
-
 class GeolocationTest extends AbstractTestCase {
 
 	protected function alterConfig(array $config) {
@@ -291,10 +289,11 @@ class GeolocationTest extends AbstractTestCase {
 	 */
 	public function testSetStatus() {
 
-	$this->googleMapsHelper->forwardSearch("Barcelona, Spain");
-	$this->googleMapsHelper->setStatus(GoogleMapsHelper::REQUEST_DENIED);
+		$this->googleMapsHelper->forwardSearch("Barcelona, Spain");
+		$this->assertEquals('OK', $this->googleMapsHelper->getStatus());
 
-	$this->assertEquals('REQUEST_DENIED', $this->googleMapsHelper->getStatus());
+		$this->googleMapsHelper->setStatus(GoogleMapsHelper::REQUEST_DENIED);
+		$this->assertEquals('REQUEST_DENIED', $this->googleMapsHelper->getStatus());
 
 	}
 

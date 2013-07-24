@@ -10,7 +10,7 @@
   convertWarningsToExceptions="true"
 >
     <testsuites>
-        <testsuite name="leaseapp">
+        <testsuite name="geolocation">
             <directory>./GeolocationTest</directory>
         </testsuite>
     </testsuites>
@@ -26,7 +26,7 @@
     </filter>
 
       <!-- <logging>
-        <log type="coverage-html" target="codeCoverage" charset="UTF-8"
+        <log type="coverage-html" target="CodeCoverage" charset="UTF-8"
             yui="true" highlight="true"
             lowUpperBound="50" highLowerBound="80"/>
         <log type="testdox-html" target="testdox.html" />

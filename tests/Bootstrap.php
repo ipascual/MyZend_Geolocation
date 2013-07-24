@@ -23,6 +23,7 @@ class Bootstrap
     {
 		//Environment
 		putenv('APPLICATION_ENV=test');
+		@mkdir("data/cache", "0777", true);
 
         // Load the user-defined test configuration file, if it exists; otherwise, load
         if (is_readable(__DIR__ . '/TestConfig.php')) {
