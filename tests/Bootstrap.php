@@ -1,19 +1,15 @@
 <?php
 namespace GeolocationTest;//Change this namespace for your test
 
-
 use Zend\Loader\AutoloaderFactory;
 use Zend\Mvc\Service\ServiceManagerConfig;
 use Zend\ServiceManager\ServiceManager;
 use Zend\Stdlib\ArrayUtils;
 use RuntimeException;
 
-//Additional functions to PHP5
-include './../../../vendor/Ipascual/PhpFunctions.php';
-
 //Error reporting
 error_reporting( E_ALL & ~E_DEPRECATED);
-ini_set("display_errors", 1); 
+ini_set("display_errors", 1);
 
 chdir(__DIR__);
 
@@ -27,7 +23,8 @@ class Bootstrap
     {
 		//Environment
 		putenv('APPLICATION_ENV=test');
-    	
+		@mkdir("data/cache", "0777", true);
+
         // Load the user-defined test configuration file, if it exists; otherwise, load
         if (is_readable(__DIR__ . '/TestConfig.php')) {
             $testConfig = include __DIR__ . '/TestConfig.php';
@@ -49,6 +46,7 @@ class Bootstrap
         $zf2ModulePaths  = implode(PATH_SEPARATOR, $zf2ModulePaths) . PATH_SEPARATOR;
         $zf2ModulePaths .= getenv('ZF2_MODULES_TEST_PATHS') ?: (defined('ZF2_MODULES_TEST_PATHS') ? ZF2_MODULES_TEST_PATHS : '');
 
+
         static::initAutoloader();
 
         // use ModuleManager to load this module and it's dependencies
@@ -66,7 +64,7 @@ class Bootstrap
 
         static::$serviceManager = $serviceManager;
         static::$config = $config;
-		
+
 		self::destroyDatabase(true);
     }
 
@@ -88,11 +86,9 @@ class Bootstrap
             $loader = include $vendorPath . '/autoload.php';
         } else {
             $zf2Path = getenv('ZF2_PATH') ?: (defined('ZF2_PATH') ? ZF2_PATH : (is_dir($vendorPath . '/ZF2/library') ? $vendorPath . '/ZF2/library' : false));
-
             if (!$zf2Path) {
                 throw new RuntimeException('Unable to load ZF2. Run `php composer.phar install` or define a ZF2_PATH environment variable.');
             }
-
             include $zf2Path . '/Zend/Loader/AutoloaderFactory.php';
 
         }
@@ -118,22 +114,23 @@ class Bootstrap
         }
         return $dir . '/' . $path;
     }
-	
+
 	/**
 	 * Common test functions
 	 */
 	public static function setUp() {
 		self::createDatabase();
+
 	}
-	
+
 	public static function tearDown() {
 		self::destroyDatabase();
 	}
-	
+
 	protected static function createDatabase(){
 		//Global fixtures
-		$fixturesFolder = __DIR__.'/../../Application/tests/fixtures';
-		
+		$fixturesFolder = __DIR__.'/fixtures';
+
 		if ($dir = opendir($fixturesFolder)) {
 			while (false !== ($file = readdir($dir))) {
 				if ($file != "." && $file != "..") {
@@ -149,17 +146,17 @@ class Bootstrap
 			closedir($dir);
 		}
 	}
-	
+
 	protected static function destroyDatabase($force = false) {
     	global $argv, $argc;
 
-		$keep = false;		
+		$keep = false;
 		foreach($argv as $arg) {
 			if($arg == "--debug") {
-				$keep = true;		
+				$keep = true;
 			}
 		}
-		
+
 		if(! $keep || $force) {
 			$databaseName = self::getDatabaseName();
 			$dm = self::getServiceManager()->get('doctrine.documentmanager.odm_default');
@@ -171,11 +168,11 @@ class Bootstrap
 			$dm->clear();
 		}
 	}
-	
+
 	protected static function getDatabaseName() {
 		$config = self::$serviceManager->get('Config');
 		return $config['doctrine']['configuration']['odm_default']['default_db'];
-		
+
 	}
 
 }

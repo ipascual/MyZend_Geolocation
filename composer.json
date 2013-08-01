@@ -1,24 +1,26 @@
 {
-    "name": "myzend/geolocation",
-    "description": "MyZend Geolocation handles Google Maps API to resolve addresses.",
-    "type" : "zf2-module",
-    "authors": [
-        {
-            "name": "Ignacio Pascual",
-            "email": "ipascual@unexpectedit.com"
-        }
-    ],
-    "autoload": {
-        "psr-0": {
-            "Geolocation": "src/"
-        },
-        "classmap": [
-            "./Module.php"
-        ]
-    },
-    "minimum-stability": "dev",
-    "require": {
-        "php":                               ">=5.3.3",
-        "zendframework/zendframework":       "2.*"
-    }
- }
+	"name" : "myzend/geolocation",
+	"description" : "MyZend Geolocation handles Google Maps API to resolve addresses.",
+	"type" : "zf2-module",
+	"authors" : [{
+			"name" : "Ignacio Pascual",
+			"email" : "ipascual@unexpectedit.com"
+		}
+	],
+	"keywords" : [],
+	"require" : {
+		"php" : ">=5.3.3",
+		"zendframework/zendframework" : "2.*@stable",
+		"myzend/core": "0.*",
+		"doctrine/doctrine-mongo-odm-module": "*@stable"
+	},
+	"autoload" : {
+		"psr-0" : {
+			"Geolocation" : "src/"
+		},
+		"classmap" : [
+			"./Module.php"
+		]
+	},
+	"minimum-stability" : "dev"
+}

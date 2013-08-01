@@ -1,0 +1,5 @@
+composer.lock
+.settings
+tests/CodeCoverage/*
+tests/data/*
+vendor/*

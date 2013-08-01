@@ -1,0 +1,23 @@
+language: php
+php:
+  - "5.4"
+
+before_script:
+  - echo "extension=mongo.so" >> `php --ini | grep "Loaded Configuration" | sed -e "s|.*:\s*||"`
+  - curl -s https://getcomposer.org/installer | php
+  - php composer.phar install
+
+
+services:
+  - mongodb
+
+script:
+  - cd tests/
+  - mkdir data/
+  - cd data/
+  - mkdir cache
+  - cd ../
+  - phpunit
+
+notifications:
+  email: false

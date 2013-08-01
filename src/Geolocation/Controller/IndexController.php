@@ -16,15 +16,6 @@ use Zend\View\Model\JsonModel;
 
 class IndexController extends AbstractActionController {
 
-	public function indexAction() {
-		d($this->geolocationHelper->lookupGeolocation("barcelona"));
-		return new ViewModel();
-	}
-
-	public function addAction() {
-		return new ViewModel();
-	}
-
 	public function lookupAction() {
 		$googleMapsHelper = $this->googleMapsHelper;
 		$googleMapsHelper->forwardSearch($this->getRequest()->getPost()->get('address'));

@@ -2,30 +2,30 @@
 /**
  *
  * @author Ignacio Pascual (using Geocoder package from Jörg Drzycimski (http://www.drzycimski.com))
- * 
- * @example How to use 
- * 
- * Declaration 
+ *
+ * @example How to use
+ *
+ * Declaration
  * $googleMapsHelper = new GoogleMapsHelper($this->getServiceManager());
  * or
  * $googleMapsHelper = new GoogleMapsHelper($this->getServiceManager(), array("language" => "es"));
- * 
- * 
+ *
+ *
  * $googleMapsHelper->forwardSearch("Barcelona, Spain");
  * if($googleMapsHelper->getStatus() == $georequest::OK) {
  * 	var_dump($googleMapsHelper->getGeoData());
  * }
- * 
+ *
  */
 
 namespace Geolocation\Helper;
 
 use Zend\Http\Client;
 use Zend\Json\Json;
- 
+
 class GoogleMapsHelper
 {
-	
+
 	public function __construct($sm, $options = array()) {
 		$this->dm = $sm->get('doctrine.documentmanager.odm_default');
 
@@ -36,31 +36,31 @@ class GoogleMapsHelper
 
 		//Set default options
 		foreach($options as $key => $value) {
-			$this->$key = $value;	
+			$this->$key = $value;
 		}
 	}
-	
+
 	/**
 	* @class vars
 	*/
-	
+
     //Extra objects to log in case of error
     public $log;
-    
+
 	// Google´s geocode URL
 	private $url = 'http://maps.google.com/maps/api/geocode/json?';
-	
+
 	// Params for request
 	private $sensor 	= "false"; // REQUIRED FOR REQUEST!
 	private $language 	= "en";
-	
+
 	// Cleartext translation of Google´s response (status)
 	const OK					= 'OK';
 	const ZERO_RESULTS			= 'ZERO_RESULTS';
 	const OVER_QUERY_LIMIT		= 'OVER_QUERY_LIMIT';
 	const REQUEST_DENIED		= 'REQUEST_DENIED';
 	const INVALID_REQUEST		= 'INVALID_REQUEST';
-	
+
 	// Class vars
 	private $response			= '';
 	private $country_long		= '';
@@ -76,11 +76,11 @@ class GoogleMapsHelper
 	private $lng				= '';
 	private $location_type		= '';
 	private $status 			= '';
-	
+
 	/**
 	* Forward search: string must be an address
 	*
-	* @param string $address 
+	* @param string $address
 	* @return obj $response
 	*/
 	public function forwardSearch($address)
@@ -88,15 +88,15 @@ class GoogleMapsHelper
 		$this->_clean();
 		return $this->_sendRequest("address=" . urlencode(stripslashes($address)));
 	}
-	
+
 	/**
 	 * Return all data in an array
-	 * 
+	 *
 	 */
 	public function getGeoData() {
 	    $data = array();
-	    $data["country_name"] = $this->country_long; 
-	    $data["country_code2"] = $this->country_short; 
+	    $data["country_name"] = $this->country_long;
+	    $data["country_code2"] = $this->country_short;
 	    $data["address"] = $this->address;
 	    $data["address_short"] = $this->address_short;
 		$data["address_street_number"] = $this->address_street_number;
@@ -105,14 +105,14 @@ class GoogleMapsHelper
 	    $data["latitude"] = $this->lat;
 	    $data["longitude"] = $this->lng;
 		$data["region"] = $this->region_long;
-		return $data;	     
+		return $data;
 	}
-	
+
 	/**
 	* Reverse search: string must be latitude and longitude
 	*
 	* @param float $lat
-	* @param float $lng 
+	* @param float $lng
 	* @return obj $response
 	*/
 	public function reverseSearch($lat, $lng)
@@ -123,14 +123,14 @@ class GoogleMapsHelper
 	/**
 	* Search Address Components Object
 	*
-	* @param string $type 
+	* @param string $type
 	* @return object / false
-	*/	
+	*/
 	function searchAddressComponents($type) {
 		foreach($this->response->results[0]->address_components as $k=>$found){
 			if(in_array($type, $found->types)){
 				return $found;
-			} 
+			}
 		}
 		return false;
 	}
@@ -138,7 +138,7 @@ class GoogleMapsHelper
 	/**
 	* Send Google geocoding request
 	*
-	* @param string $search 
+	* @param string $search
 	* @return object response (body only)
 	*/
 	private function _sendRequest($search)
@@ -174,11 +174,11 @@ class GoogleMapsHelper
 			//$this->email->send($email);
 		}
 	} // end request
-	
+
 	/**
 	* Parse JSON default values: map object values to readable content
 	*
-	* @param none 
+	* @param none
 	* @return none
 	*/
 	private function _setDefaults()
@@ -202,7 +202,7 @@ class GoogleMapsHelper
 		$street_number = $this->searchAddressComponents("street_number");
 		if(isset($street_number->long_name))
 			$this->address_street_number = $street_number->long_name;
-		
+
 		$address_short = $this->searchAddressComponents("route");
 		if(isset($address_short->long_name))
 			$this->address_short = $address_short->long_name;
@@ -210,15 +210,15 @@ class GoogleMapsHelper
 		$post_code = $this->searchAddressComponents("postal_code");
 		if(isset($post_code->long_name))
 			$this->post_code = $post_code->long_name;
-			
+
 		$this->lat = $this->response->results[0]->geometry->location->lat;
 		$this->lng = $this->response->results[0]->geometry->location->lng;
 		$this->location_type = $this->response->results[0]->geometry->location_type;
 	}
-	
+
 	/**
 	 * Clean all variables before starting a search
-	 * 
+	 *
 	 */
 	private function _clean(){
 		$this->response = '';
@@ -236,7 +236,7 @@ class GoogleMapsHelper
 		$this->location_type = '';
 		$this->status = '';
 	}
-	
+
 	/**
 	 * @return the $status
 	 */
@@ -252,5 +252,5 @@ class GoogleMapsHelper
 	}
 
 
-	
+
 }
