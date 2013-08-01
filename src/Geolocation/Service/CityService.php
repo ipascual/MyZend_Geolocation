@@ -1,5 +1,4 @@
 <?php
-
 namespace Geolocation\Service;
 
 use MyZend\Service\Service as Service;

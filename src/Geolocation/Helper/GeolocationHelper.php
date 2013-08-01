@@ -1,11 +1,11 @@
 <?php
-
 namespace Geolocation\Helper;
 
+use MyZend\Helper\Helper;
 use Geolocation\Helper\GoogleMapsHelper;
 use Geolocation\Service\GeolocationService;
 
-class GeolocationHelper {
+class GeolocationHelper extends Helper {
 
 	protected $geolocationService;
 	protected $googleMapsHelper;

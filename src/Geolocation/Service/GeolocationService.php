@@ -1,5 +1,4 @@
 <?php
-
 namespace Geolocation\Service;
 
 use MyZend\Service\Service as Service;
@@ -109,7 +108,6 @@ class GeolocationService extends Service {
 
 	public function findCity(array $data) {
 		return $this->dm->getRepository("Geolocation\Document\City")->findOneBy($data);
-		
 	}
 
 	public function findCountry(array $data) {

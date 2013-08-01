@@ -1,5 +1,4 @@
 <?php
-
 namespace Geolocation;
 
 use Locale;
@@ -43,18 +42,15 @@ class Module
 
 	public function preDispatch($event)
     {
-
         //ServiceManager
 		$sm = $event->getApplication()->getServiceManager();
 
         //Services
 		$event->getTarget()->geolocationService = new GeolocationService($sm);
-		//...
 
         //Helpers
 		$event->getTarget()->googleMapsHelper = new GoogleMapsHelper($sm);
 		$event->getTarget()->geolocationHelper = new GeolocationHelper($sm);
-
     }
 
 }

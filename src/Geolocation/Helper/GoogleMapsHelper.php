@@ -17,7 +17,6 @@
  * }
  *
  */
-
 namespace Geolocation\Helper;
 
 use Zend\Http\Client;
