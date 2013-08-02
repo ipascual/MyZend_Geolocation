@@ -28,7 +28,7 @@ return array(
                 'hydrator_dir'       => __DIR__.'/../../data/cache',
                 'hydrator_namespace' => 'Hydrator',
 
-                'default_db'         => 'leaseapp-test',
+                'default_db'         => 'myzend-geolocation-test',
 
                 'filters'            => array()
             )

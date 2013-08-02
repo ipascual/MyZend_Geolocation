@@ -4,7 +4,7 @@ Version 0.9
 
 Build status:
 
-[![Build Status](https://travis-ci.org/m0t0r/MyZend_Geolocation.png?branch=master)](https://travis-ci.org/m0t0r/MyZend_Geolocation)
+[![Build Status](https://travis-ci.org/ipascual/MyZend_Geolocation.png?branch=master)](https://travis-ci.org/ipascual/MyZend_Geolocation)
 
 
 Introduction

@@ -46,7 +46,6 @@ class Bootstrap
         $zf2ModulePaths  = implode(PATH_SEPARATOR, $zf2ModulePaths) . PATH_SEPARATOR;
         $zf2ModulePaths .= getenv('ZF2_MODULES_TEST_PATHS') ?: (defined('ZF2_MODULES_TEST_PATHS') ? ZF2_MODULES_TEST_PATHS : '');
 
-
         static::initAutoloader();
 
         // use ModuleManager to load this module and it's dependencies
