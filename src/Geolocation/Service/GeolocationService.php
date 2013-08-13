@@ -72,6 +72,7 @@ class GeolocationService extends Service {
 		$city->setName($geoData['city']);
 		$city->setCountry($country);
 		$city->setState($geoData['region']);
+		$city->setStateShort($geoData['region_short']);
 		$city->setLatitude($geoData['latitude']);
 		$city->setLongitude($geoData['longitude']);
 		

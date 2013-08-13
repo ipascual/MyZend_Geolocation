@@ -209,6 +209,7 @@ class GeolocationTest extends AbstractTestCase {
 		$geoDataSample = array(
 			"city" => "Stavropol",
 			"region" => "Stavropol krai",
+			"region_short" => "",
 			"latitude" => 45.0463273,
   			"longitude" => 41.9747475
 		);
@@ -296,9 +297,29 @@ class GeolocationTest extends AbstractTestCase {
 		$this->assertEquals('REQUEST_DENIED', $this->googleMapsHelper->getStatus());
 
 	}
-
-
-
+	
+	
+	/**
+	 * Get a USA state in a short format
+	 * 
+	 */
+	public function testGetStateShort(){
+		$location = "Dallas, Texas, USA";
+		
+		$totalGeolocations = $this->geolocationService->findAll()->count();
+		
+		$googleMapsHelper = $this->googleMapsHelper;
+		$googleMapsHelper->forwardSearch($location);
+		if ($googleMapsHelper->getStatus() == $googleMapsHelper::OK) {
+			$geoData = $googleMapsHelper->getGeoData();
+			$geolocation = $this->geolocationService->lookup($geoData);
+			
+			$this->assertNotNull($geolocation);
+			$this->assertEquals('TX', $geolocation->getCity()->getStateShort());
+		}
+		
+		
+	}
 
 
 

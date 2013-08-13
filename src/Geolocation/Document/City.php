@@ -17,6 +17,9 @@ class City extends Document {
 	/** @ODM\String */
 	protected $state;
 	
+	/** @ODM\String */
+	protected $state_short;
+	
 	/** @ODM\ReferenceOne(targetDocument="Geolocation\Document\Country") */
 	protected $country;
 
