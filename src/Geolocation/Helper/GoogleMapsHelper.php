@@ -104,6 +104,7 @@ class GoogleMapsHelper
 	    $data["latitude"] = $this->lat;
 	    $data["longitude"] = $this->lng;
 		$data["region"] = $this->region_long;
+		$data["region_short"] = $this->region_short;
 		return $data;
 	}
 
@@ -167,12 +168,8 @@ class GoogleMapsHelper
 		    	$objects = array_merge($this->log, $objects);
 		    }
 		    $vars["log"]["objects"] = $objects;
-			//Admin mail
-			//$email = $this->email->create($vars);
-			//$email->setTemplateName("log");
-			//$this->email->send($email);
 		}
-	} // end request
+	}
 
 	/**
 	* Parse JSON default values: map object values to readable content
